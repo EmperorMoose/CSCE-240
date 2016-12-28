@@ -8,7 +8,6 @@
 *
 * Copyright (C) 2016 by
 ***************************************************************************/
-#include "stdafx.h"
 #include <iostream>
 #include <string>
 
@@ -53,7 +52,9 @@ void solveQuadratic(double a, double b, double c)
 	if (posSoln < 0)
 	{
 		imaginary = true;
-		i = sqrt(posSoln);
+		cout << "here";
+		i = sqrt((posSoln * -1));
+		cout << i;
 		i = i / (2 * a);
 		cout << i;
 		posSoln = (-1 * b) / (2 * a);
