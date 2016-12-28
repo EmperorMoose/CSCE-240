@@ -9,7 +9,6 @@
 * Copyright (C) 2016 by
 ***************************************************************************/
 
-#include "stdafx.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
