@@ -6,7 +6,6 @@
 * Output:
 ***************************************************************************/
 
-#include "stdafx.h"
 #include "String.h"
 #include <iostream>
 #include <cstdlib>
