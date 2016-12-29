@@ -14,15 +14,22 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 #include "String.h"
+#include <string>
 
 class Sequence : public String {
 public:
+	string seq;
+	int len;
+	char seqA[];
     Sequence();
     Sequence(char str[]);
     Sequence(const Sequence& orig);
     virtual ~Sequence();
 
     void setData(int index, char value);
+	int getLength();
+	string getSeq();
+	char at(int index);
     Sequence & operator=(const char *str);
     bool isValid(const char *str);
 private:
@@ -30,4 +37,3 @@ private:
 };
 
 #endif /* SEQUENCE_H */
-
