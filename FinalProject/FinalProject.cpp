@@ -7,97 +7,29 @@
 #include "Gene.h"
 #include "Sequence.h"
 
-class Gene
-{
-	private:
-		//This is the pointer for the sequence constructor
-		Sequence *seq;
-		//Not sure where this is used
-		int size;
-
-	public:
-		Gene()
-		{
-			//This is the default constructor
-		}
-
-		Gene(ifstream &in_file,ofstream &out_file, int overlap)
-		{
-			//This constructs a gene using infile
-			//Outfile is where the output printed
-			//Overlap is the minimum overlap in the genes
-		}
-	
-		Gene(const Gene& orig)
-		{
-			//This is the copy constructor
-		}
-
-		virtual ~Gene()
-		{
-			//This is the deconstructor
-		}
-
-		int numSeq(ifstream & in_file)
-		{
-			//Assembles the number sequence?
-		}
-};
-
-class Sequence
-{
-	private:
-		//Nothing yet
-
-	public:
-		Sequence()
-		{
-			//This is the default constructor
-		}
-
-		Sequence(char str[])
-		{
-			//Constructs a sequence based on str[]
-		}
-
-		Sequence(const Sequence& orig)
-		{
-			//This is a copy constructor
-		}
-
-		virtual ~Sequence()
-		{
-			//This is the destructor
-		}
-
-		void setData(int index, char value)
-		{
-			//Assigns value to index within str
-		}
-
-		Sequence & operator=(const char *str)
-		{
-			//This overloads the = operator in order to assign sequence to the value pointed to by str
-		}
-
-		bool isValid(const char *str)
-		{
-			//Decides if str is valid?
-		}
-};
-
 int main(int argc, char* argv[])
 {
+	//NOTES: Is the sequence on each line, prefaced by the ID? or are they seperate lines?
 	//Everything below reads in and assigns the file to file_contents
 	//***************************************************************
 	//ifstream geneFile;
 	//geneFile.open(argv[1]);
 	//string str;
 	//string file_contents;
+	int lines = 0;
+	//this counts up the lines in the file
 	//while (getline(geneFile, str))
 	//{
-	//	file_contents += str;
+	//	lines++;
 	//}
+	
 
-	string file_contents = "";
+	string *file_contents;
+	//file_contents = new string[lines]; 
+	file_contents = new string[2];
+	file_contents[0] = "TAACGATGCAACAGACGACTATACTAACTTCTCTGGGCCTTGATCACTAAACCGGATTGCTCACTGAGGCAAGACCATATCATACCCGAGATATAGCTGA";
+	file_contents[1] = "TTTCCCGCGTACATGTGTGAACCCGGCTGCCTTTGCTTGCGGTCGGGTTGGCTTTTACATTTGGTAGCACTAACGATGCAACAGACGACTATACTAACTT";
+	
+	//delete[] file_contents;
+
 }
