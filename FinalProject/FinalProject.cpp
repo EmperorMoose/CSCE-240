@@ -85,7 +85,19 @@ class Sequence
 			//Decides if str is valid?
 		}
 };
-int main()
+
+int main(int argc, char* argv[])
 {
-    return 0;
+	//Everything below reads in and assigns the file to file_contents
+	//***************************************************************
+	//ifstream geneFile;
+	//geneFile.open(argv[1]);
+	//string str;
+	//string file_contents;
+	//while (getline(geneFile, str))
+	//{
+	//	file_contents += str;
+	//}
+
+	string file_contents = "";
 }
