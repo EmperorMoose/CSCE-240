@@ -79,13 +79,3 @@ void Sequence::show()
 {
 	cout << seq;
 }
-Sequence & Sequence::operator=(const char *str)
-{
-	//This overloads the = operator in order to assign sequence to the value pointed to by str
-}
-
-bool Sequence::isValid(const char *str)
-{
-	//Decides if str is valid?
-}
-//};
