@@ -1,39 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Sequence.h
- * Author: homayoun
- *
- * Created on December 1, 2016, 9:00 AM
- */
-
-#ifndef SEQUENCE_H
-#define SEQUENCE_H
-#include "String.h"
+#pragma once
+#include "stdafx.h"
+#ifndef  SEQUENCE_H
+#define SEQUENCE
 #include <string>
+#include <string.h>
+#include <iostream>
 
-class Sequence : public String {
+class Sequence
+{
 public:
 	string seq;
 	int len;
 	char seqA[];
-    Sequence();
-    Sequence(char str[]);
-    Sequence(const Sequence& orig);
-    virtual ~Sequence();
 
-    void setData(int index, char value);
+	Sequence();
+	Sequence(string str);
+	Sequence(const Sequence& orig);
+	virtual ~Sequence();
+
+	void setData(int index, char value);
 	int getLength();
 	string getSeq();
 	char at(int index);
-    Sequence & operator=(const char *str);
-    bool isValid(const char *str);
-private:
+	Sequence & operator=(const char *str);
+	bool isValid(const char *str);
 
 };
-
-#endif /* SEQUENCE_H */
+#endif // ! SEQUENCE_H
