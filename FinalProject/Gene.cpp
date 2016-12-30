@@ -4,20 +4,6 @@
 #include "Gene.h"
 #include "Sequence.h"
 
-//class Gene: public Sequence
-//{
-//	private:
-
-//	public:
-//The minimum overlap
-//int overlap;
-//The sequence
-//string seq;
-//The length of the sequence
-//int len;
-//The Array of the characters in the sequence
-//char seqA[256];
-
 //The default constructor
 Gene::Gene()
 {
@@ -32,18 +18,18 @@ Gene::Gene()
 Gene::Gene(string str, int overlap)
 {
 	bool exists = true;
-	*seq = str;
+	seq = str;
 	overlap = overlap;
-	len = seq->getLength();
+	len = seq.length();
 	for (int i = 0; i < len; i++)
-		seqA[i] = seq->at(i);
+		seqA[i] = seq.at(i);
 }
 
 //Copy constructor
 Gene::Gene(Gene& orig)
 {
 	bool exists = true;
-	*seq = orig.getSeq();
+	seq = orig.getSeq();
 	len = orig.getLength();
 	for (int i = 0; i < len; i++)
 		seqA[i] = orig.at(i);
@@ -67,25 +53,35 @@ void Gene::compare(Gene cmp, int overlap, Sequence sequence)
 	//end index is the last position on the gene
 	int endIndex = len;
 	int count = 0;
+	//Used to store the subsequence
 	char *subSeqA;
-	subSeqA = new char[];
+	int size = endIndex - startIndex;
+	subSeqA = new char[256];
+	//used to store the subsequence that needs to be appended
 	char *subSeqB;
-	subSeqB = new char[];
+	subSeqB = new char[256];
 	//starting at the start index, until the end index, add to subseq the value
+	cout << "here3";
+	//ERROR this loop is never entered, dont know why
 	for (int i = startIndex; i <= endIndex; i++)
 	{
+		cout << "here2";
+		cout << cmp.at(i);
 		subSeqA[count] = cmp.at(i);
 		count++;
 	}
 
+	//Finds the subsequence
 	int match = findSub(subSeqA);
-	
-	if (match != 1)
+	//if there is a match
+	if (match != -1)
 	{
+		//populate an array for the match
 		for (int i = 0; i < startIndex; i++)
 		{
 			subSeqB[i] = cmp.at(i);
 		}
+		//append
 		string newsub(subSeqB);
 		sequence.append(subSeqB);
 	}
@@ -119,16 +115,10 @@ int Gene::findSub(char subSeqA[])
 	return pos;
 }
 
-bool Gene::exists()
+bool Gene::doesExist()
 {
 	if (exists)
 		return true;
 	else
 		return false;
 }
-
-int Gene::numSeq(ifstream & in_file)
-{
-	//Assembles the number sequence?
-}
-//};
