@@ -1,3 +1,4 @@
+#pragma once
 /*
 * To change this license header, choose License Headers in Project Properties.
 * To change this template file, choose Tools | Templates
@@ -25,17 +26,17 @@ public:
 	Gene(string str, int overlap);
 	Gene(Gene& orig);
 	virtual ~Gene();
-	int numSeq(ifstream & in_file);
 	int overlap;
 	int len;
+	string seq;
 	bool exists;
 	void compare(Gene cmp, int overlap, Sequence sequence);
 	int findSub(char subSeqA[]);
-	bool exists();
+	bool doesExist();
 private:
-	Sequence *seq;
 	int size;
 
 };
 
 #endif /* GENE_H */
+
