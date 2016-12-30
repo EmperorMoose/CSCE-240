@@ -30,6 +30,24 @@ int main(int argc, char* argv[])
 	file_contents[0] = "TAACGATGCAACAGACGACTATACTAACTTCTCTGGGCCTTGATCACTAAACCGGATTGCTCACTGAGGCAAGACCATATCATACCCGAGATATAGCTGA";
 	file_contents[1] = "TTTCCCGCGTACATGTGTGAACCCGGCTGCCTTTGCTTGCGGTCGGGTTGGCTTTTACATTTGGTAGCACTAACGATGCAACAGACGACTATACTAACTT";
 	
+	Gene *list;
+	list = new Gene[];
+	Sequence sequence;
+
+	for (int i = 0; i < 2;i++)
+	{
+		list[i] = Gene(file_contents[i], 1);
+	}
+
+	for (int i = 0; i < 2;i++)
+	{
+		if (list[i + 1].exists)
+		{
+			list[i].compare(list[i + 1], 1, sequence);
+		}
+	}
+	sequence.show();
 	//delete[] file_contents;
 
 }
+
