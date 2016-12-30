@@ -4,80 +4,54 @@
 #include "Gene.h"
 #include "Sequence.h"
 
-class Sequence
+class Gene: public Sequence
 {
-private:
-	//Nothing yet
+	private:
 
-public:
-	//The sequence
-	string seq;
-	//The length of the sequence
-	int len;
-	//The Array of the characters in the sequence
-	char seqA[];
+	public:
+		//The minimum overlap
+		int overlap;
+		//The sequence
+		string seq;
+		//The length of the sequence
+		int len;
+		//The Array of the characters in the sequence
+		char seqA[256];
 
-	//Default constuctor sets seq and seqA to be null
-	Sequence()
-	{
-		seq = " ";
-		for (int i = 0; i < len; i++)
-			seqA[i] = '\0';
-	}
+		//The default constructor
+		Gene()
+		{
+			overlap = 1;
+			seq = " ";
+			for (int i = 0; i < len; i++)
+				seqA[i] = '\0';
+		}
 
-	//Constructs a sequence based on str[]
-	Sequence(string str)
-	{
-		seq = str;
-		len = seq.length;
-		for (int i = 0; i < len; i++)
-			seqA[i] = seq.at(i);
-	}
+		//parameterized constructor
+		Gene(string str, int overlap)
+		{
+			seq = str;
+			overlap = overlap;
+			len = seq.length;
+			for (int i = 0; i < len; i++)
+				seqA[i] = seq.at(i);
+		}
 
-	//Copy constructor
-	Sequence(Sequence& orig)
-	{
-		seq = orig.getSeq();
-		len = orig.getLength();
-		for (int i = 0; i < len; i++)
-			seqA[i] = orig.at(i);
-	}
+		Gene(const Gene& orig)
+		{
+			seq = orig.getSeq();
+			len = orig.getLength();
+			for (int i = 0; i < len; i++)
+				seqA[i] = orig.at(i);
+		}
 
-	virtual ~Sequence()
-	{
-		//This is the destructor
-	}
+		virtual ~Gene()
+		{
+			//This is the deconstructor
+		}
 
-	//Sets assigns value to a specific index within seqA
-	void setData(int index, char value)
-	{
-		seqA[index] = value;
-	}
-
-	//Returns the length
-	int getLength()
-	{
-		return len;
-	}
-
-	//Returns the seq
-	string getSeq()
-	{
-		return seq;
-	}
-
-	//Returns the char at the specified index within seqA
-	char at(int index)
-	{
-		return seqA[index];
-	}
-	Sequence & operator=(const char *str)
-	{
-		//This overloads the = operator in order to assign sequence to the value pointed to by str
-	}
-
-	bool isValid(const char *str)
-	{
-		//Decides if str is valid?
-	}
+		int numSeq(ifstream & in_file)
+		{
+			//Assembles the number sequence?
+		}
 };
