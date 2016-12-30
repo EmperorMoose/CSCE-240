@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	//geneFile.open(argv[1]);
 	//string str;
 	//string file_contents;
-	int lines = 0;
+	int lines = 2;
 	//this counts up the lines in the file
 	//while (getline(geneFile, str))
 	//{
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 	file_contents[1] = "TTTCCCGCGTACATGTGTGAACCCGGCTGCCTTTGCTTGCGGTCGGGTTGGCTTTTACATTTGGTAGCACTAACGATGCAACAGACGACTATACTAACTT";
 	
 	Gene *list;
-	list = new Gene[];
+	list = new Gene[lines];
 	Sequence sequence;
 
 	for (int i = 0; i < 2;i++)
@@ -41,8 +41,9 @@ int main(int argc, char* argv[])
 
 	for (int i = 0; i < 2;i++)
 	{
-		if (list[i + 1].exists)
+		if (list[i + 1].doesExist())
 		{
+			cout << "here";
 			list[i].compare(list[i + 1], 1, sequence);
 		}
 	}
@@ -50,4 +51,3 @@ int main(int argc, char* argv[])
 	//delete[] file_contents;
 
 }
-
