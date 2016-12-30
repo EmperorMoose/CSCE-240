@@ -25,8 +25,6 @@ public:
 	int getLength();
 	string getSeq();
 	char at(int index);
-	Sequence & operator=(const char *str);
-	bool isValid(const char *str);
 	void append(string str);
 	void show();
 
