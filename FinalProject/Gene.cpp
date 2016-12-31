@@ -80,7 +80,7 @@ int Gene::findSub(char subSeqA[])
 }
 
 //Compares two gene objects, then if there is an overlap, it appends them to the sequence
-void Gene::compare(Gene cmp, int &overlap, Sequence sequence)
+void Gene::compare(Gene &cmp, int &overlap, Sequence sequence)
 {
 	//The length of the gene to be compared
 	//Error check: If the overlap is bigger than the target sequence, make it just under the same size
@@ -131,3 +131,4 @@ bool Gene::doesExist()
 	else
 		return false;
 }
+
