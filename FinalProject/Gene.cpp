@@ -14,13 +14,18 @@ Gene::Gene()
 		seqA[i] = '\0';
 }
 
+char Gene::at(int index)
+{
+	return seqA[index];
+}
+
 //parameterized constructor
-Gene::Gene(string str, int overlap)
+Gene::Gene(string str, int &overlap)
 {
 	bool exists = true;
 	seq = str;
 	overlap = overlap;
-	len = seq.length();
+	len = str.length();
 	for (int i = 0; i < len; i++)
 		seqA[i] = seq.at(i);
 }
@@ -39,15 +44,48 @@ Gene::~Gene()
 {
 	//This is the deconstructor
 }
+//Searches in seqA[] for the subSeqA[]
+int Gene::findSub(char subSeqA[])
+{
+	//sets the return to false
+	int pos(-1);
+	//gets the length of the subSeqA
+	int subLen = strlen(subSeqA) / sizeof(char);
+	//gets the length of the seqA
+	int len = sizeof(seqA) / sizeof(char);
+	//For all within seqA
+	for (int i = 0; i<len - 1; i++)
+	{
+		//if seqa at this position is equal to subseqA
+		if (seqA[i] == subSeqA[0])
+		{
+			//then for all less than sub length
+			for (int j = 0; j<subLen; j++)
+			{
+				//if seqA + J isnt subseqA[j]
+				if (seqA[i + j] != subSeqA[j])
+				{
+					//break
+					pos = -1;
+					break;
+				}
+				else
+				{
+					pos = i;
+				}
+			}
+		}
+	}
+	return pos;
+}
 
 //Compares two gene objects, then if there is an overlap, it appends them to the sequence
-void Gene::compare(Gene cmp, int overlap, Sequence sequence)
+void Gene::compare(Gene cmp, int &overlap, Sequence sequence)
 {
 	//The length of the gene to be compared
-	int cmpLen = cmp.getLength();
 	//Error check: If the overlap is bigger than the target sequence, make it just under the same size
-	if (overlap > cmpLen)
-		overlap = cmpLen - 1;
+	//if (overlap > cmpLen)
+	//	overlap = cmpLen - 1;
 	//Start index is length of the gene minus the overlap
 	int startIndex = len - overlap;
 	//end index is the last position on the gene
@@ -56,17 +94,15 @@ void Gene::compare(Gene cmp, int overlap, Sequence sequence)
 	//Used to store the subsequence
 	char *subSeqA;
 	int size = endIndex - startIndex;
-	subSeqA = new char[256];
+	subSeqA = new char[len];
 	//used to store the subsequence that needs to be appended
 	char *subSeqB;
-	subSeqB = new char[256];
+	subSeqB = new char[len];
 	//starting at the start index, until the end index, add to subseq the value
-	cout << "here3";
 	//ERROR this loop is never entered, dont know why
-	for (int i = startIndex; i <= endIndex; i++)
+	for (int i = startIndex; i <= len; i++)
 	{
-		cout << "here2";
-		cout << cmp.at(i);
+		cout << "//" << cmp.at(i) << "\\";
 		subSeqA[count] = cmp.at(i);
 		count++;
 	}
@@ -88,33 +124,6 @@ void Gene::compare(Gene cmp, int overlap, Sequence sequence)
 
 }
 
-//Searches in seqA[] for the subSeqA[]
-int Gene::findSub(char subSeqA[])
-{
-	int pos(-1);
-	int subLen = strlen(subSeqA) / sizeof(char);
-	int len = sizeof(seqA) / sizeof(char);
-	for (int i = 0; i<len - 1; i++)
-	{
-		if (seqA[i] == subSeqA[0])
-		{
-			for (int j = 0; j<subLen; j++)
-			{
-				if (seqA[i + j] != subSeqA[j])
-				{
-					pos = -1;
-					break;
-				}
-				else
-				{
-					pos = i;
-				}
-			}
-		}
-	}
-	return pos;
-}
-
 bool Gene::doesExist()
 {
 	if (exists)
@@ -122,3 +131,4 @@ bool Gene::doesExist()
 	else
 		return false;
 }
+
