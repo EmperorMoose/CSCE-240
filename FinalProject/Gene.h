@@ -23,20 +23,22 @@ using namespace std;
 class Gene : public Sequence {
 public:
 	Gene();
-	Gene(string str, int overlap);
+	Gene(string str, int &overlap);
 	Gene(Gene& orig);
 	virtual ~Gene();
 	int overlap;
 	int len;
 	string seq;
 	bool exists;
-	void compare(Gene cmp, int overlap, Sequence sequence);
+	void compare(Gene cmp, int &overlap, Sequence sequence);
 	int findSub(char subSeqA[]);
 	bool doesExist();
+	char at(int index);
 private:
 	int size;
 
 };
 
 #endif /* GENE_H */
+
 
