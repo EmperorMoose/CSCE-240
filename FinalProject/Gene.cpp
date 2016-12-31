@@ -131,4 +131,3 @@ bool Gene::doesExist()
 	else
 		return false;
 }
-
