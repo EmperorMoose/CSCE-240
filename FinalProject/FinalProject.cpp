@@ -33,21 +33,29 @@ int main(int argc, char* argv[])
 	Gene *list;
 	list = new Gene[lines];
 	Sequence sequence;
-	int overlap = 1;
+	int overlap = 5;
 
 	for (int i = 0; i < 2;i++)
 	{
-		list[i] = Gene(file_contents[i], overlap);
+		list[i] = *new Gene(file_contents[i], overlap);
 	}
+	/*
+	for (int i = 0; i < list[0].len; i++)
+	{
+		cout << list[0].at(i);
+	}
+	*/
 
 	for (int i = 0; i < 2;i++)
 	{
-		if (list[i + 1].doesExist())
-		{
+		cout << i;
+		//if (list[i + 1].doesExist())
+		//{
 			cout << "here";
-			list[i].compare(list[i + 1], overlap, sequence);
-		}
+			list[i+1].compare(list[i], overlap, sequence);
+		//}
 	}
 	sequence.show();
 	//delete[] file_contents;
 
+}
