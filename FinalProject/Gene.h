@@ -22,6 +22,7 @@ using namespace std;
 
 class Gene : public Sequence {
 public:
+	char seqA[100];
 	Gene();
 	Gene(string str, int &overlap);
 	Gene(Gene& orig);
@@ -40,5 +41,6 @@ private:
 };
 
 #endif /* GENE_H */
+
 
 
