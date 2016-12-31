@@ -31,7 +31,7 @@ public:
 	int len;
 	string seq;
 	bool exists;
-	void compare(Gene cmp, int &overlap, Sequence sequence);
+	void compare(Gene &cmp, int &overlap, Sequence sequence);
 	int findSub(char subSeqA[]);
 	bool doesExist();
 	char at(int index);
@@ -41,6 +41,4 @@ private:
 };
 
 #endif /* GENE_H */
-
-
 
