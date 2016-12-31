@@ -14,7 +14,7 @@ public:
 	friend class Gene;
 	string seq;
 	int len;
-	char seqA[256];
+	char seqA[100];
 
 	Sequence();
 	Sequence(string str);
